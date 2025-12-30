@@ -61,6 +61,21 @@ export const getCompanion = async (id: string) => {
   return data[0];
 }
 
+export const getCompanionsByIds = async (ids: string[]) => {
+  const supabase = createSupabaseClient();
+
+  const { data, error } = await supabase
+    .from('companion')
+    .select() 
+    .in('id', ids); 
+
+  if (error) {
+    console.error("Error fetching companions by IDs:", error);
+    return null; 
+  }
+  return data;
+}
+
 export const addToSessionHistory = async (companionId: string) => {
   const { userId } = await auth();
   const supabase = createSupabaseClient();

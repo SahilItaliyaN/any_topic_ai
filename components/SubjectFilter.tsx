@@ -12,7 +12,7 @@ const SubjectFilter = () => {
     const router = useRouter()
     const searchParams = useSearchParams();
     const query = searchParams.get("subject") || "";
-  
+
     const [subject , setSubject] = useState(query);
     
     useEffect(()=>{
